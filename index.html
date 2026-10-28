@@ -1,246 +1,121 @@
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172033} header{background:#10243e;color:white;padding:22px 16px;text-align:center} header h1{margin:0 0 8px;color:#55e0c0} header p{margin:0;color:#dbeafe} nav{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:10px;background:white;position:sticky;top:0;z-index:2} button{border:0;border-radius:9px;padding:12px;background:#087f8c;color:white;font-weight:bold;cursor:pointer} nav button{background:#e2e8f0;color:#10243e} nav button.active{background:#087f8c;color:white} main{padding:14px;max-width:900px;margin:auto} .panel{background:white;padding:16px;border-radius:14px;margin-bottom:14px;box-shadow:0 2px 8px #0000000a} h2{font-size:20px;margin-top:0} .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px} .stat{background:#e6fffa;border-radius:10px;padding:14px} .stat span{display:block;color:#475569;font-size:13px} .stat strong{display:block;font-size:22px;margin-top:8px} input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin:6px 0 12px;font-size:15px;background:white} label{font-size:14px;font-weight:bold} .formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px} table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:9px 5px;border-bottom:1px solid #e2e8f0;text-align:right} .tablewrap{overflow-x:auto} .danger{background:#dc3545} .secondary{background:#475569} .hidden{display:none!important} .actions{display:flex;gap:8px;flex-wrap:wrap} .actions button{flex:1} .small{font-size:12px;color:#64748b} .notice{padding:10px;background:#fff7ed;border-radius:9px;color:#9a3412;font-size:13px;margin-bottom:12px} .inline{display:flex;align-items:center;gap:8px} .inline button{white-space:nowrap;margin-bottom:12px} footer{text-align:center;padding:20px;color:#64748b} @media(max-width:420px){nav{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}table{font-size:12px}.inline{display:block}} 
 
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>كول مول - إدارة محل الموبايلات</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
-header{background:#10243e;color:white;padding:22px 16px;text-align:center}
-header h1{margin:0 0 8px;color:#55e0c0}
-header p{margin:0;color:#dbeafe}
-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:10px;background:white;position:sticky;top:0;z-index:2}
-button{border:0;border-radius:9px;padding:12px;background:#087f8c;color:white;font-weight:bold;cursor:pointer}
-nav button{background:#e2e8f0;color:#10243e}
-nav button.active{background:#087f8c;color:white}
-main{padding:14px;max-width:850px;margin:auto}
-.panel{background:white;padding:16px;border-radius:14px;margin-bottom:14px;box-shadow:0 2px 8px #0000000a}
-h2{font-size:20px;margin-top:0}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat{background:#e6fffa;border-radius:10px;padding:14px}
-.stat span{display:block;color:#475569;font-size:13px}
-.stat strong{display:block;font-size:22px;margin-top:8px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin:6px 0 12px;font-size:15px;background:white}
-label{font-size:14px;font-weight:bold}
-.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:9px 5px;border-bottom:1px solid #e2e8f0;text-align:right}
-.tablewrap{overflow-x:auto}
-.danger{background:#dc3545}
-.secondary{background:#475569}
-.hidden{display:none}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions button{flex:1}
-.small{font-size:12px;color:#64748b}
-footer{text-align:center;padding:20px;color:#64748b}
-@media(max-width:420px){nav{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}table{font-size:12px}}
-</style>
-</head>
-<body>
-<header>
-<h1>📱 كول مول</h1>
-<p>نظام إدارة محل الموبايلات والصيانة</p>
-</header>
+📱 كول مول
 
-<nav id="nav">
-<button class="active" data-page="home">الرئيسية</button>
-<button data-page="sales">بيع وشراء</button>
-<button data-page="repair">الصيانة</button>
-<button data-page="stock">المخزون</button>
-<button data-page="daily">اليومية</button>
-<button data-page="customers">العملاء</button>
-</nav>
+نظام إدارة محل الموبايلات والإكسسوارات والصيانة
 
-<main>
-<section id="home" class="page">
-<div class="panel">
-<h2>ملخص المحل</h2>
-<div class="stats">
-<div class="stat"><span>مبيعات اليوم</span><strong id="todaySales">0 ج.م</strong></div>
-<div class="stat"><span>مصروفات اليوم</span><strong id="todayExpenses">0 ج.م</strong></div>
-<div class="stat"><span>أجهزة الصيانة المفتوحة</span><strong id="openRepairs">0</strong></div>
-<div class="stat"><span>أصناف المخزون</span><strong id="stockCount">0</strong></div>
-<div class="stat"><span>المبالغ المتبقية للصيانة</span><strong id="repairDue">0 ج.م</strong></div>
-<div class="stat"><span>صافي حركة اليوم</span><strong id="netToday">0 ج.م</strong></div>
-</div>
-</div>
-<div class="panel">
-<h2>تنبيه مهم</h2>
-<p>البيانات محفوظة على المتصفح والجهاز الحالي فقط. اعمل نسخة احتياطية بانتظام، ولا تعتمد على هذه النسخة وحدها لحسابات المحل الحقيقية.</p>
-<button onclick="exportData()">تصدير نسخة احتياطية</button>
-</div>
-</section>
+الرئيسية بيع وشراء الصيانة المخزون اليومية العملاء 
 
-<section id="sales" class="page hidden">
-<div class="panel">
-<h2>تسجيل بيع أو شراء موبايل</h2>
-<form id="saleForm">
-<label>نوع العملية</label>
-<select name="type"><option value="sale">بيع موبايل</option><option value="purchase">شراء موبايل</option></select>
-<div class="formgrid">
-<div><label>نوع الجهاز</label><input name="device" required placeholder="مثال: Samsung A55"></div>
-<div><label>رقم IMEI أو السيريال</label><input name="imei" placeholder="رقم الجهاز"></div>
-<div><label>اسم العميل أو المورد</label><input name="person"></div>
-<div><label>رقم الهاتف</label><input name="phone"></div>
-<div><label>السعر الإجمالي بالجنيه</label><input name="total" type="number" min="0" required></div>
-<div><label>المبلغ المدفوع</label><input name="paid" type="number" min="0" value="0" required></div>
-</div>
-<label>ملاحظات</label><textarea name="notes" rows="2"></textarea>
-<button type="submit">حفظ العملية</button>
-</form>
-</div>
-<div class="panel"><h2>سجل البيع والشراء</h2><div class="tablewrap"><table><thead><tr><th>التاريخ</th><th>العملية</th><th>الجهاز</th><th>الإجمالي</th><th>المدفوع</th><th>الباقي</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
-</section>
+ملخص المحل
 
-<section id="repair" class="page hidden">
-<div class="panel">
-<h2>استلام جهاز صيانة</h2>
-<form id="repairForm">
-<div class="formgrid">
-<div><label>اسم العميل</label><input name="customer" required></div>
-<div><label>رقم الهاتف</label><input name="phone" required></div>
-<div><label>نوع الجهاز</label><input name="device" required></div>
-<div><label>IMEI أو السيريال</label><input name="imei"></div>
-<div><label>العطل المذكور</label><input name="fault" required></div>
-<div><label>تكلفة الصيانة</label><input name="cost" type="number" min="0" required></div>
-<div><label>المدفوع</label><input name="paid" type="number" min="0" value="0" required></div>
-<div><label>حالة الجهاز</label><select name="status"><option>قيد الفحص</option><option>قيد الإصلاح</option><option>جاهز للاستلام</option><option>تم التسليم</option></select></div>
-</div>
-<label>تفاصيل إضافية عن الجهاز</label><textarea name="notes" rows="2"></textarea>
-<button type="submit">تسجيل الصيانة</button>
-</form>
-</div>
-<div class="panel"><h2>أجهزة الصيانة</h2><div class="tablewrap"><table><thead><tr><th>العميل</th><th>الجهاز والعطل</th><th>التكلفة</th><th>المدفوع</th><th>الباقي</th><th>الحالة</th><th>تعديل</th></tr></thead><tbody id="repairRows"></tbody></table></div></div>
-</section>
+مبيعات اليوم0 ج.م
 
-<section id="stock" class="page hidden">
-<div class="panel">
-<h2>إضافة صنف للمخزون</h2>
-<form id="stockForm">
-<div class="formgrid">
-<div><label>اسم الصنف</label><input name="name" required placeholder="شاحن أو شاشة أو بطارية"></div>
-<div><label>نوع الصنف</label><select name="kind"><option>موبايل</option><option>شاحن</option><option>قطعة غيار</option><option>سماعة</option><option>كابل</option><option>أخرى</option></select></div>
-<div><label>الكمية</label><input name="qty" type="number" min="1" required></div>
-<div><label>تكلفة الوحدة</label><input name="cost" type="number" min="0" required></div>
-<div><label>سعر البيع للوحدة</label><input name="price" type="number" min="0" required></div>
-</div>
-<button type="submit">إضافة للمخزون</button>
-</form>
-</div>
-<div class="panel"><h2>المخزون الحالي</h2><div class="tablewrap"><table><thead><tr><th>الصنف</th><th>النوع</th><th>الكمية</th><th>التكلفة</th><th>سعر البيع</th><th>تعديل</th></tr></thead><tbody id="stockRows"></tbody></table></div></div>
-</section>
+مصروفات اليوم0 ج.م
 
-<section id="daily" class="page hidden">
-<div class="panel">
-<h2>اليومية: إيراد أو مصروف</h2>
-<form id="dailyForm">
-<label>نوع الحركة</label>
-<select name="type"><option value="income">إيراد</option><option value="expense">مصروف</option></select>
-<label>البيان</label><input name="description" required placeholder="مثال: فاتورة كهرباء أو إيراد إضافي">
-<label>المبلغ بالجنيه</label><input name="amount" type="number" min="0.01" step="0.01" required>
-<button type="submit">تسجيل الحركة</button>
-</form>
-</div>
-<div class="panel"><h2>حركات اليومية</h2><div class="tablewrap"><table><thead><tr><th>التاريخ</th><th>النوع</th><th>البيان</th><th>المبلغ</th></tr></thead><tbody id="dailyRows"></tbody></table></div></div>
-</section>
+أجهزة الصيانة المفتوحة0
 
-<section id="customers" class="page hidden">
-<div class="panel">
-<h2>تسجيل بيانات عميل</h2>
-<form id="customerForm">
-<label>اسم العميل</label><input name="name" required>
-<label>رقم الهاتف</label><input name="phone" required>
-<label>العنوان أو ملاحظات</label><textarea name="notes" rows="2"></textarea>
-<button type="submit">حفظ العميل</button>
-</form>
-</div>
-<div class="panel"><h2>العملاء</h2><div class="tablewrap"><table><thead><tr><th>الاسم</th><th>الهاتف</th><th>ملاحظات</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>
-</section>
-</main>
-<footer>كول مول © إدارة محل الموبايلات</footer>
+أصناف المخزون0
 
-<script>
-const $=id=>document.getElementById(id);
-const money=n=>(Number(n)||0).toLocaleString('ar-EG',{maximumFractionDigits:2})+' ج.م';
-const today=()=>new Date().toLocaleDateString('en-CA');
-const now=()=>new Date().toISOString();
-const keys=['sales','repairs','stock','daily','customers'];
-let db={};
-function load(){
- keys.forEach(k=>{try{db[k]=JSON.parse(localStorage.getItem('coolmall_'+k)||'[]')}catch(e){db[k]=[]}});
- render();
-}
-function save(k){localStorage.setItem('coolmall_'+k,JSON.stringify(db[k]));render()}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function formObj(form){return Object.fromEntries(new FormData(form).entries())}
-function num(v){return Math.max(0,Number(v)||0)}
-function dateLabel(v){return new Date(v).toLocaleString('ar-EG')}
-function render(){
- const day=today();
- const sales=db.sales.filter(x=>x.date.slice(0,10)===day&&x.type==='sale').reduce((s,x)=>s+x.total,0);
- const expenses=db.daily.filter(x=>x.date.slice(0,10)===day&&x.type==='expense').reduce((s,x)=>s+x.amount,0);
- const incomes=db.daily.filter(x=>x.date.slice(0,10)===day&&x.type==='income').reduce((s,x)=>s+x.amount,0);
- $('todaySales').textContent=money(sales);
- $('todayExpenses').textContent=money(expenses);
- $('openRepairs').textContent=db.repairs.filter(x=>x.status!=='تم التسليم').length;
- $('stockCount').textContent=db.stock.length;
- $('repairDue').textContent=money(db.repairs.reduce((s,x)=>s+Math.max(0,x.cost-x.paid),0));
- $('netToday').textContent=money(sales+incomes-expenses);
- $('salesRows').innerHTML=db.sales.slice().reverse().map(x=>`<tr><td>${esc(dateLabel(x.date))}</td><td>${x.type==='sale'?'بيع':'شراء'}</td><td>${esc(x.device)}</td><td>${money(x.total)}</td><td>${money(x.paid)}</td><td>${money(x.total-x.paid)}</td></tr>`).join('');
- $('repairRows').innerHTML=db.repairs.map((x,i)=>`<tr><td>${esc(x.customer)}<br>${esc(x.phone)}</td><td>${esc(x.device)}<br>${esc(x.fault)}</td><td>${money(x.cost)}</td><td>${money(x.paid)}</td><td>${money(x.cost-x.paid)}</td><td>${esc(x.status)}</td><td><button onclick="changeRepair(${i})">الحالة</button></td></tr>`).join('');
- $('stockRows').innerHTML=db.stock.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.kind)}</td><td>${x.qty}</td><td>${money(x.cost)}</td><td>${money(x.price)}</td><td><button class="secondary" onclick="adjustStock(${i})">الكمية</button></td></tr>`).join('');
- $('dailyRows').innerHTML=db.daily.slice().reverse().map(x=>`<tr><td>${esc(dateLabel(x.date))}</td><td>${x.type==='income'?'إيراد':'مصروف'}</td><td>${esc(x.description)}</td><td>${money(x.amount)}</td></tr>`).join('');
- $('customerRows').innerHTML=db.customers.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${esc(x.notes)}</td></tr>`).join('');
-}
-document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{
- document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
- $(b.dataset.page).classList.remove('hidden');
- document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x===b));
-}));
-$('saleForm').addEventListener('submit',e=>{
- e.preventDefault();const f=e.currentTarget,o=formObj(f);
- const total=num(o.total),paid=num(o.paid);
- if(paid>total)return alert('المدفوع لا يمكن أن يزيد عن الإجمالي');
- db.sales.push({...o,total,paid,date:now()});save('sales');f.reset();alert('تم تسجيل العملية');
-});
-$('repairForm').addEventListener('submit',e=>{
- e.preventDefault();const f=e.currentTarget,o=formObj(f);
- const cost=num(o.cost),paid=num(o.paid);
- if(paid>cost)return alert('المدفوع أكبر من تكلفة الصيانة');
- db.repairs.push({...o,cost,paid,date:now()});save('repairs');f.reset();alert('تم استلام جهاز الصيانة');
-});
-$('stockForm').addEventListener('submit',e=>{
- e.preventDefault();const f=e.currentTarget,o=formObj(f);
- db.stock.push({...o,qty:Math.floor(num(o.qty)),cost:num(o.cost),price:num(o.price)});
- save('stock');f.reset();alert('تمت إضافة الصنف');
-});
-$('dailyForm').addEventListener('submit',e=>{
- e.preventDefault();const f=e.currentTarget,o=formObj(f);
- db.daily.push({...o,amount:num(o.amount),date:now()});save('daily');f.reset();alert('تم تسجيل الحركة');
-});
-$('customerForm').addEventListener('submit',e=>{
- e.preventDefault();const f=e.currentTarget;
- db.customers.push({...formObj(f),date:now()});save('customers');f.reset();alert('تم حفظ العميل');
-});
-function changeRepair(i){
- const states=['قيد الفحص','قيد الإصلاح','جاهز للاستلام','تم التسليم'];
- const current=db.repairs[i].status;
- const next=states[(states.indexOf(current)+1)%states.length];
- if(confirm('تغيير الحالة إلى: '+next+'؟')){db.repairs[i].status=next;save('repairs')}
-}
-function adjustStock(i){
- const v=prompt('أدخل الكمية الجديدة للصنف '+db.stock[i].name,db.stock[i].qty);
- if(v===null||v.trim()===''||!Number.isFinite(Number(v))||Number(v)<0)return;
- db.stock[i].qty=Math.floor(Number(v));save('stock');
-}
-function exportData(){
- const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
- const url=URL.createObjectURL(blob);const a=document.createElement('a');
- a.href=url;a.download='cool-mall-backup.json';a.click();URL.revokeObjectURL(url);
-}
-load();
-</script>
-</body>
-</html>
+المبالغ المتبقية للصيانة0 ج.م
+
+صافي حركة اليوم0 ج.م
+
+تنبيه مهم
+
+البيانات محفوظة على المتصفح والجهاز الحالي فقط. اعمل نسخة احتياطية بانتظام، ولا تعتمد على هذه النسخة وحدها لحسابات المحل الحقيقية.
+
+تصدير نسخة احتياطيةإدارة المنتجات والأسعار
+
+تسجيل بيع أو شراء منتج
+
+سجّل المنتجات وأسعارها أولًا من قسم المخزون. اختر المنتج هنا وسيظهر سعره تلقائيًا. الرقم التسلسلي مطلوب فقط للموبايل ويمكن تركه فارغًا.
+
+نوع العملية بيعشراء من مورد 
+
+المنتج المسجل في المخزون-- اختار المنتج --
+
+نوع المنتج
+
+رقم IMEI أو السيريال (للموبايل فقط)
+
+اسم العميل
+
+رقم الهاتف
+
+الكمية
+
+سعر بيع القطعة بالجنيه
+
+الإجمالي بالجنيه
+
+المبلغ المدفوع
+
+الباقي (محسوب تلقائيًا)
+
+ملاحظات حفظ العملية وتحديث المخزون 
+
+سجل البيع والشراء
+
+التاريخالعمليةالمنتجالكميةالإجماليالمدفوعالباقي
+
+استلام جهاز صيانة
+
+اسم العميل
+
+رقم الهاتف
+
+نوع الجهاز
+
+IMEI أو السيريال
+
+العطل المذكور
+
+تكلفة الصيانة
+
+المدفوع
+
+حالة الجهازقيد الفحصقيد الإصلاحجاهز للاستلامتم التسليم
+
+تفاصيل إضافية عن الجهاز تسجيل الصيانة 
+
+أجهزة الصيانة
+
+العميلالجهاز والعطلالتكلفةالمدفوعالباقيالحالةتعديل
+
+إضافة صنف للمخزون
+
+اسم الصنف
+
+نوع الصنفموبايلشاحنسماعةبطاريةجراباسكرينةكابلقطعة غيارأخرى
+
+الكمية
+
+تكلفة الوحدة
+
+سعر البيع للوحدة
+
+إضافة للمخزون 
+
+لو عندك نفس الصنف مسجل بالفعل، لا تضفه مرة ثانية إلا لو عايز سجلًا منفصلًا له.
+
+المخزون الحالي
+
+الصنفالنوعالكميةالتكلفةسعر البيعتعديل
+
+اليومية: إيراد أو مصروف
+
+نوع الحركةإيرادمصروف البيان المبلغ بالجنيه تسجيل الحركة 
+
+حركات اليومية
+
+التاريخالنوعالبيانالمبلغ
+
+تسجيل بيانات عميل
+
+اسم العميل رقم الهاتف العنوان أو ملاحظات حفظ العميل 
+
+العملاء
+
+الاسمالهاتفملاحظات
+
+كول مول © إدارة محل الموبايلات const $=id=>document.getElementById(id); const money=n=>(Number(n)||0).toLocaleString('ar-EG',{maximumFractionDigits:2})+' ج.م'; const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}; const now=()=>new Date().toISOString(); const keys=['sales','repairs','stock','daily','customers']; let db={}; function load(){ keys.forEach(k=>{try{const val=JSON.parse(localStorage.getItem('coolmall_'+k)||'[]');db[k]=Array.isArray(val)?val:[]}catch(e){db[k]=[]}}); // Keep old sales/stock records compatible with the updated form. db.stock=db.stock.map((x,i)=>({...x,id:x.id||('old-'+i+'-'+String(x.name||'item').replace(/\s+/g,'-'))})); db.sales=db.sales.map(x=>({...x,qty:Number(x.qty)||1,unitPrice:Number(x.unitPrice)||(Number(x.total)||0)/(Number(x.qty)||1),productName:x.productName||x.device||'منتج سابق'})); localStorage.setItem('coolmall_stock',JSON.stringify(db.stock)); render(); } function save(k){localStorage.setItem('coolmall_'+k,JSON.stringify(db[k]));render()} function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))} function formObj(form){return Object.fromEntries(new FormData(form).entries())} function num(v){return Math.max(0,Number(v)||0)} function dateLabel(v){return new Date(v).toLocaleString('ar-EG')} function getProduct(id){return db.stock.find(x=>String(x.id)===String(id))} function renderProductOptions(selected=''){ const s=$('productSelect'); s.innerHTML='<option value="">-- اختار المنتج --</option>'+db.stock.map((x)=>`<option value="${esc(x.id)}"${String(x.id)===String(selected)?' selected':''}>${esc(x.name)} — ${esc(x.kind)} (متاح: ${Number(x.qty)||0})</option>`).join(''); } function render(){ const day=today(); const sales=db.sales.filter(x=>(x.date||'').slice(0,10)===day&&x.type==='sale').reduce((s,x)=>s+(Number(x.total)||0),0); const expenses=db.daily.filter(x=>(x.date||'').slice(0,10)===day&&x.type==='expense').reduce((s,x)=>s+(Number(x.amount)||0),0); const incomes=db.daily.filter(x=>(x.date||'').slice(0,10)===day&&x.type==='income').reduce((s,x)=>s+(Number(x.amount)||0),0); $('todaySales').textContent=money(sales);$('todayExpenses').textContent=money(expenses); $('openRepairs').textContent=db.repairs.filter(x=>x.status!=='تم التسليم').length; $('stockCount').textContent=db.stock.length; $('repairDue').textContent=money(db.repairs.reduce((s,x)=>s+Math.max(0,(Number(x.cost)||0)-(Number(x.paid)||0)),0)); $('netToday').textContent=money(sales+incomes-expenses); $('salesRows').innerHTML=db.sales.slice().reverse().map(x=>`<tr><td>${esc(dateLabel(x.date))}</td><td>${x.type==='sale'?'بيع':'شراء'}</td><td>${esc(x.productName||x.device||'')}</td><td>${Number(x.qty)||1}</td><td>${money(x.total)}</td><td>${money(x.paid)}</td><td>${money((Number(x.total)||0)-(Number(x.paid)||0))}</td></tr>`).join(''); $('repairRows').innerHTML=db.repairs.map((x,i)=>`<tr><td>${esc(x.customer)}<br>${esc(x.phone)}</td><td>${esc(x.device)}<br>${esc(x.fault)}</td><td>${money(x.cost)}</td><td>${money(x.paid)}</td><td>${money((Number(x.cost)||0)-(Number(x.paid)||0))}</td><td>${esc(x.status)}</td><td><button onclick="changeRepair(${i})">الحالة</button></td></tr>`).join(''); $('stockRows').innerHTML=db.stock.map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${esc(x.kind)}</td><td>${Number(x.qty)||0}</td><td>${money(x.cost)}</td><td>${money(x.price)}</td><td><button class="secondary" onclick="adjustStock(${i})">الكمية</button></td></tr>`).join(''); $('dailyRows').innerHTML=db.daily.slice().reverse().map(x=>`<tr><td>${esc(dateLabel(x.date))}</td><td>${x.type==='income'?'إيراد':'مصروف'}</td><td>${esc(x.description)}</td><td>${money(x.amount)}</td></tr>`).join(''); $('customerRows').innerHTML=db.customers.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${esc(x.notes)}</td></tr>`).join(''); renderProductOptions($('productSelect').value); updateTotals(); } document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{ document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden')); $(b.dataset.page).classList.remove('hidden'); document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x===b)); })); function updateTotals(){ const q=Math.max(1,Math.floor(Number($('saleQty').value)||1)); const p=num($('unitPrice').value); const total=Math.round(q*p*100)/100; $('saleTotal').value=total.toFixed(2); $('saleDue').value=Math.max(0,total-num($('salePaid').value)).toFixed(2)+' ج.م'; } function updateProductFields(){ const product=getProduct($('productSelect').value); const type=$('transactionType').value; $('personLabel').textContent=type==='sale'?'اسم العميل':'اسم المورد'; $('unitPriceLabel').textContent=type==='sale'?'سعر بيع القطعة بالجنيه':'تكلفة شراء القطعة بالجنيه'; if(!product){$('productKind').value='';$('imeiWrap').classList.add('hidden');$('imei').required=false;$('unitPrice').value='';updateTotals();return} $('productKind').value=product.kind||'أخرى'; const isPhone=product.kind==='موبايل'; $('imeiWrap').classList.toggle('hidden',!isPhone); $('imei').required=false; $('unitPrice').value=Number(type==='sale'?product.price:product.cost||0).toString(); updateTotals(); } $('productSelect').addEventListener('change',updateProductFields); $('transactionType').addEventListener('change',updateProductFields); $('saleQty').addEventListener('input',updateTotals); $('unitPrice').addEventListener('input',updateTotals); $('salePaid').addEventListener('input',updateTotals); $('saleForm').addEventListener('submit',e=>{ e.preventDefault();const f=e.currentTarget,o=formObj(f),product=getProduct(o.productId); if(!product){alert('لا توجد منتجات مسجلة. افتح المخزون وأضف المنتج وسعره أولًا.');return} const qty=Math.floor(Number(o.qty)||0),unitPrice=num(o.unitPrice),total=Math.round(qty*unitPrice*100)/100,paid=num(o.paid); if(qty<1)return alert('الكمية لازم تكون 1 أو أكثر'); if(paid>total)return alert('المدفوع لا يمكن أن يزيد عن الإجمالي'); if(o.type==='sale'&&qty>Number(product.qty))return alert('الكمية المطلوبة أكبر من المتاح في المخزون. المتاح: '+product.qty); const record={...o,device:product.name,productName:product.name,productId:product.id,kind:product.kind,qty,unitPrice,total,paid,date:now()}; db.sales.push(record); if(o.type==='sale')product.qty=Number(product.qty)-qty; else product.qty=Number(product.qty)+qty; save('sales');localStorage.setItem('coolmall_stock',JSON.stringify(db.stock)); f.reset();$('saleQty').value='1';$('salePaid').value='0';updateProductFields();render(); alert('تم حفظ العملية وتحديث المخزون'); }); $('repairForm').addEventListener('submit',e=>{ e.preventDefault();const f=e.currentTarget,o=formObj(f),cost=num(o.cost),paid=num(o.paid); if(paid>cost)return alert('المدفوع أكبر من تكلفة الصيانة'); db.repairs.push({...o,cost,paid,date:now()});save('repairs');f.reset();alert('تم استلام جهاز الصيانة'); }); $('stockForm').addEventListener('submit',e=>{ e.preventDefault();const f=e.currentTarget,o=formObj(f); const name=o.name.trim();if(!name)return; const existing=db.stock.find(x=>x.name.trim().toLowerCase()===name.toLowerCase()&&x.kind===o.kind); if(existing){ if(!confirm('الصنف موجود بالفعل. هل تريد إضافة الكمية الجديدة إلى نفس الصنف وتحديث الأسعار؟'))return; existing.qty=(Number(existing.qty)||0)+Math.floor(num(o.qty));existing.cost=num(o.cost);existing.price=num(o.price); }else{ db.stock.push({id:(globalThis.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random().toString(16).slice(2),...o,name,qty:Math.floor(num(o.qty)),cost:num(o.cost),price:num(o.price)}); } save('stock');f.reset();alert('تمت إضافة/تحديث الصنف. تقدر الآن تختاره من قائمة البيع والشراء.'); }); $('dailyForm').addEventListener('submit',e=>{ e.preventDefault();const f=e.currentTarget,o=formObj(f); db.daily.push({...o,amount:num(o.amount),date:now()});save('daily');f.reset();alert('تم تسجيل الحركة'); }); $('customerForm').addEventListener('submit',e=>{ e.preventDefault();const f=e.currentTarget; db.customers.push({...formObj(f),date:now()});save('customers');f.reset();alert('تم حفظ العميل'); }); function changeRepair(i){ const states=['قيد الفحص','قيد الإصلاح','جاهز للاستلام','تم التسليم']; const current=db.repairs[i].status;const next=states[(states.indexOf(current)+1)%states.length]; if(confirm('تغيير الحالة إلى: '+next+'؟')){db.repairs[i].status=next;save('repairs')} } function adjustStock(i){ const v=prompt('أدخل الكمية الجديدة للصنف '+db.stock[i].name,db.stock[i].qty); if(v===null||v.trim()===''||!Number.isFinite(Number(v))||Number(v)<0)return; db.stock[i].qty=Math.floor(Number(v));save('stock'); } function exportData(){ const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob);const a=document.createElement('a'); a.href=url;a.download='cool-mall-backup.json';a.click();URL.revokeObjectURL(url); } load(); 
