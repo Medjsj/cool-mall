@@ -1,0 +1,1 @@
+{ "name": "Cool Mall", "short_name": "Cool Mall", "id": "/cool-mall/", "start_url": "/cool-mall/", "scope": "/cool-mall/", "display": "standalone", "background_color": "#FFFFFF", "theme_color": "#FFFFFF", "description": "Cool Mall app for sales, inventory, and mobile repairs", "icons": [] }
